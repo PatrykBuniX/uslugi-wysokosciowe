@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
 
   :root{
     --primary: #8DC1DF;
+    --shadow: 0 5px 1px -5px black;
   }
 `
 

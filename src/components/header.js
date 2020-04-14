@@ -11,7 +11,7 @@ const StyledHeader = styled.header`
   position: fixed;
   z-index: 1;
   background: white;
-  box-shadow: 0 0px 5px 0 black;
+  /* box-shadow: 0 0px 5px 0 black; */
   display: flex;
   flex-direction: column;
 
@@ -33,9 +33,10 @@ const NavBar = styled.nav`
   top: 5rem;
   z-index: -1;
   background: white;
+  box-shadow: 0 0px 5px 0 black;
   transform: ${({ isNavOpen }) =>
     isNavOpen ? "translateY(0%)" : "translateY(-100%)"};
-  transition: transform 1s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 
   @media (min-width: 768px) {
     & {
@@ -59,6 +60,12 @@ const HeroNav = styled.div`
       position: unset;
       width: unset;
     }
+  }
+`
+const StyledLink = styled(Link)`
+  height: 100%;
+  & > svg {
+    height: 100%;
   }
 `
 
@@ -101,9 +108,9 @@ const Header = () => {
   return (
     <StyledHeader>
       <HeroNav>
-        <Link style={{ height: "100%" }} to="/">
-          <Logo style={{ height: "100%" }} />
-        </Link>
+        <StyledLink to="/">
+          <Logo />
+        </StyledLink>
         <Burger isNavOpen={isNavOpen} handleClick={handleClick} />
       </HeroNav>
       <NavBar isNavOpen={isNavOpen}>

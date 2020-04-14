@@ -9,6 +9,7 @@ const MainWrapper = styled.main`
   background-size: cover;
   background-position: center;
   position: relative;
+  box-shadow: var(--shadow);
 
   &::before {
     z-index: 0;
@@ -34,14 +35,13 @@ const ContentWrapper = styled.div`
 
 const HeroText = styled.h1`
   font-weight: bold;
-  font-size: 11vw;
+  font-size: 2.5rem;
   color: white;
   padding: 1rem;
-  margin-left: 2rem;
   text-shadow: 2px 2px 5px black;
   @media (min-width: 768px) {
     & {
-      font-size: 7vw;
+      font-size: 5rem;
     }
   }
 `
