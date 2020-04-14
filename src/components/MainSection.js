@@ -1,12 +1,13 @@
 import React from "react"
 import styled from "styled-components"
-import img from "../images/image.png"
+import img from "../images/image1.png"
 
 const MainWrapper = styled.main`
   height: 100vh;
   background-image: url(${img});
   background-attachment: fixed;
   background-size: cover;
+  background-position: center;
   position: relative;
 
   &::before {
