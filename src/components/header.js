@@ -11,7 +11,7 @@ const StyledHeader = styled.header`
   position: fixed;
   z-index: 1;
   background: white;
-  /* box-shadow: 0 0px 5px 0 black; */
+  box-shadow: 0 0px 5px 0 black;
   display: flex;
   flex-direction: column;
 
@@ -33,7 +33,7 @@ const NavBar = styled.nav`
   top: 5rem;
   z-index: -1;
   background: white;
-  box-shadow: 0 0px 5px 0 black;
+  box-shadow: 5px 0px 5px 0 black;
   transform: ${({ isNavOpen }) =>
     isNavOpen ? "translateY(0%)" : "translateY(-100%)"};
   transition: transform 0.2s ease-in-out;

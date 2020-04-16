@@ -1,14 +1,18 @@
 import React from "react"
 import styled from "styled-components"
-import url from "../images/image3.jpg"
+// import url from "../images/image3.jpg"
 import Window from "../icons/mycie_okien.svg"
+import url from "../images/image1.png"
 
 const OfferSectionWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--primary);
-  box-shadow: var(--shadow);
+  background-image: url(${url});
+  background-attachment: fixed;
+  background-position: center;
+  box-shadow: 0 5px 1px -5px black;
+  padding: 3rem 0;
 `
 
 const OfferWrapper = styled.div`
@@ -54,7 +58,7 @@ const HeroText = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 5rem 0;
+  margin-bottom: 3rem;
   font-size: 1rem;
 
   & > h2 {

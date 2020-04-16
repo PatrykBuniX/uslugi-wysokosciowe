@@ -8,12 +8,13 @@ const AboutWrapper = styled.section`
   align-items: center;
   flex-direction: column;
   padding: 2rem;
-  box-shadow: var(--shadow);
+  box-shadow: 0 0px 5px 0 black;
 
   @media (min-width: 768px) {
     & {
       padding: 4rem 2rem;
       flex-direction: row;
+      box-shadow: 0 0px 5px 0 black;
     }
   }
 `

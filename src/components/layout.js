@@ -18,11 +18,12 @@ const GlobalStyle = createGlobalStyle`
 
   :root{
     --primary: #8DC1DF;
-    --shadow: 0 5px 1px -5px black;
   }
 `
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+  overflow: hidden;
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`

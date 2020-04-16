@@ -1,15 +1,18 @@
 import React from "react"
 import styled from "styled-components"
-import img from "../images/image1.png"
+import img from "../images/image2.jpg"
 
 const MainWrapper = styled.main`
   height: 100vh;
   background-image: url(${img});
-  background-attachment: fixed;
   background-size: cover;
   background-position: center;
   position: relative;
-  box-shadow: var(--shadow);
+  box-shadow: 0 0px 5px 0 black;
+
+  @media (min-width: 768px) {
+    background-attachment: fixed;
+  }
 
   &::before {
     z-index: 0;
@@ -20,7 +23,7 @@ const MainWrapper = styled.main`
     width: 100%;
     height: 100%;
     background-color: var(--primary);
-    opacity: 0.25;
+    opacity: 0.5;
   }
 `
 

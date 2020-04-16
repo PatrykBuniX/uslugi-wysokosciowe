@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import MainSection from "../components/MainSection"
 import AboutSection from "../components/AboutSection"
 import OfferSection from "../components/OfferSection"
+import GallerySection from "../components/GallerySection"
 
 const IndexPage = () => (
   <Layout>
@@ -12,6 +13,7 @@ const IndexPage = () => (
     <MainSection />
     <AboutSection />
     <OfferSection />
+    <GallerySection />
   </Layout>
 )
 
