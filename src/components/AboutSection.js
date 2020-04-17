@@ -24,6 +24,7 @@ const AboutText = styled.div`
   width: 100%;
   background-color: var(--primary);
   box-shadow: 0 0 15px -5px black;
+  padding: 0.5rem;
 
   &::before {
     content: "Kim jestem?";
@@ -31,9 +32,8 @@ const AboutText = styled.div`
     font-weight: bold;
     font-size: 3rem;
     position: relative;
-    top: 1rem;
-    left: 1rem;
-    padding: 1rem;
+    top: 0;
+    left: 0;
   }
   @media (min-width: 768px) {
     & {

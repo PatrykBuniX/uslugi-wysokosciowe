@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react"
 import styled from "styled-components"
 import { motion, AnimatePresence } from "framer-motion"
 import { wrap } from "@popmotion/popcorn"
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa"
 import image1 from "../images/image1.png"
 import image2 from "../images/image2.jpg"
 import image3 from "../images/image3.jpg"
@@ -17,8 +18,9 @@ const GalleryWrapper = styled.section`
 `
 
 const ImgWrapper = styled.div`
-  height: 50%;
+  height: 60%;
   width: 90%;
+  max-width: 650px;
   position: relative;
   overflow: hidden;
 `
@@ -34,21 +36,25 @@ const StyledImg = styled(motion.img)`
 const Button = styled.button`
   position: absolute;
   z-index: 2;
-  width: 5rem;
-  height: 5rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
   top: 50%;
-  background-color: white;
+  background-color: black;
+  color: white;
   border: none;
   transform: translateY(-50%);
-  ${({ go }) => (go === "prev" ? "left: 0rem;" : "right: 0rem;")}
+  ${({ go }) => (go === "prev" ? "left: 2%;" : "right: 2%;")}
 
-  & > p {
+  & > svg {
     transition: transform 0.2s ease-in-out;
   }
 
   &:hover {
     cursor: pointer;
-    & p {
+    & svg {
       transform: scale(1.5);
     }
   }
@@ -93,13 +99,13 @@ const GallerySection = () => {
             }}
           />
         </AnimatePresence>
+        <Button go="prev" onClick={() => paginate(-1)}>
+          <FaAngleLeft />
+        </Button>
+        <Button go="next" onClick={() => paginate(1)}>
+          <FaAngleRight />
+        </Button>
       </ImgWrapper>
-      <Button go="prev" onClick={() => paginate(-1)}>
-        <p>prev</p>
-      </Button>
-      <Button go="next" onClick={() => paginate(1)}>
-        <p>next</p>
-      </Button>
     </GalleryWrapper>
   )
 }
