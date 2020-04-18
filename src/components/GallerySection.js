@@ -8,19 +8,37 @@ import image2 from "../images/image2.jpg"
 import image3 from "../images/image3.jpg"
 
 const GalleryWrapper = styled.section`
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   justify-content: center;
   background-color: var(--primary);
   align-items: center;
   box-shadow: 0 5px 1px -5px black;
   position: relative;
+  padding: 3rem 0;
+  flex-direction: column;
+`
+
+const HeroText = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  font-size: 1rem;
+
+  & > h2 {
+    font-size: 2em;
+  }
+  & > p {
+    font-size: 1.5em;
+  }
 `
 
 const ImgWrapper = styled.div`
-  height: 60%;
-  width: 90%;
-  max-width: 650px;
+  min-height: 550px;
+  width: 100%;
+  max-width: 850px;
   position: relative;
   overflow: hidden;
 `
@@ -66,14 +84,14 @@ const GallerySection = () => {
 
   const imageIndex = wrap(0, images.length, page)
 
-  const divVariants = {
-    initial: { x: direction > 0 ? "100%" : "-100%", opacity: 0 },
-    animate: { zIndex: 1, x: 0, opacity: 1 },
+  const variants = {
+    enter: { x: direction > 0 ? "100%" : "-100%", opacity: 1 },
+    center: { zIndex: 1, x: 0, opacity: 1 },
     exit: { zIndex: 0, x: direction < 0 ? "100%" : "-100%", opacity: 0 },
   }
 
   useEffect(() => {
-    console.log([page, direction], imageIndex)
+    console.log(page, direction)
   })
 
   const paginate = newDirection => {
@@ -82,16 +100,19 @@ const GallerySection = () => {
 
   return (
     <GalleryWrapper>
+      <HeroText>
+        <h2>Galeria</h2>
+        <p>Zobacz jak wyglda moja praca.</p>
+      </HeroText>
       <ImgWrapper>
-        <AnimatePresence initial={false} custom={direction}>
+        <AnimatePresence initial={false}>
           <StyledImg
             key={page}
             src={images[imageIndex]}
             alt={`image${page}`}
-            custom={direction}
-            variants={divVariants}
-            initial="initial"
-            animate="animate"
+            variants={variants}
+            initial="enter"
+            animate="center"
             exit="exit"
             transition={{
               x: { duration: 0.5 },
