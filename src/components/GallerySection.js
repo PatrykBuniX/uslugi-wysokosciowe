@@ -8,7 +8,6 @@ import image2 from "../images/image2.jpg"
 import image3 from "../images/image3.jpg"
 
 const GalleryWrapper = styled.section`
-  /* height: 100vh; */
   display: flex;
   justify-content: center;
   background-color: var(--primary);
@@ -38,7 +37,7 @@ const HeroText = styled.div`
 const ImgWrapper = styled.div`
   min-height: 550px;
   width: 100%;
-  max-width: 850px;
+  max-width: 1000px;
   position: relative;
   overflow: hidden;
 `
@@ -100,6 +99,10 @@ const GallerySection = () => {
 
   return (
     <GalleryWrapper>
+      <a
+        style={{ visibility: "hidden", position: "absolute", top: "-5rem" }}
+        id="gallery"
+      />
       <HeroText>
         <h2>Galeria</h2>
         <p>Zobacz jak wyglda moja praca.</p>

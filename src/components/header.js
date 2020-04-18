@@ -90,6 +90,10 @@ const NavItem = styled.li`
   & > a {
     color: gray;
     text-decoration: none;
+
+    &:hover {
+      color: black;
+    }
   }
   @media (max-width: 768px) {
     & {
@@ -116,13 +120,13 @@ const Header = () => {
       <NavBar isNavOpen={isNavOpen}>
         <NavList>
           <NavItem>
+            <a href="#about">O mnie</a>
+          </NavItem>
+          <NavItem>
             <a href="#offer">Oferta</a>
           </NavItem>
           <NavItem>
-            <a href="#galery">Galeria</a>
-          </NavItem>
-          <NavItem>
-            <a href="#opinions">Opinie</a>
+            <a href="#gallery">Galeria</a>
           </NavItem>
           <NavItem>
             <a href="#contact">Kontakt</a>

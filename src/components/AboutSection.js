@@ -9,6 +9,7 @@ const AboutWrapper = styled.section`
   flex-direction: column;
   padding: 2rem;
   box-shadow: 0 0px 5px 0 black;
+  position: relative;
 
   @media (min-width: 768px) {
     & {
@@ -65,6 +66,10 @@ const AboutP = styled.p`
 const AboutSection = () => {
   return (
     <AboutWrapper>
+      <a
+        style={{ visibility: "hidden", position: "absolute", top: "-5rem" }}
+        id="about"
+      />
       <AboutText>
         <AboutP>
           It is a long established fact that a reader will be distracted by the
