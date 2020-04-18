@@ -13,10 +13,10 @@ const GalleryWrapper = styled.section`
   justify-content: center;
   background-color: var(--secondary);
   align-items: center;
-  box-shadow: 0 5px 1px -5px black;
   position: relative;
   padding: 3rem 0;
   flex-direction: column;
+  box-shadow: 0 0px 5px 0 black;
 `
 
 const HeroText = styled.div`

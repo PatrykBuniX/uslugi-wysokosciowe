@@ -7,10 +7,10 @@ const OfferSectionWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url(${url});
+  background-color: var(--secondary);
   background-position: center;
   background-size: cover;
-  box-shadow: 0 5px 1px -5px black;
+  box-shadow: 0 0px 5px 0 black;
   padding: 3rem 0;
   position: relative;
 
@@ -50,7 +50,6 @@ const Offer = styled.div`
   height: 17rem;
   width: 90%;
   margin: 5%;
-  background: white;
   box-shadow: 0 0 15px -5px black;
   display: flex;
   flex-direction: column;

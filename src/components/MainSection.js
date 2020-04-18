@@ -8,7 +8,7 @@ const MainWrapper = styled.main`
   background-size: cover;
   background-position: center;
   position: relative;
-  box-shadow: 0 0px 5px 0 black;
+  box-shadow: 0px 5px 5px 0px black;
 
   @media (min-width: 768px) {
     background-attachment: fixed;
