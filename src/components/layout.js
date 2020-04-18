@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
 
   :root{
     --primary: #8DC1DF;
+    --secondary: #efefef;
   }
 `
 

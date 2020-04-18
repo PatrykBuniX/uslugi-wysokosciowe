@@ -10,7 +10,7 @@ const AboutWrapper = styled.section`
   padding: 2rem;
   box-shadow: 0 0px 5px 0 black;
   position: relative;
-
+  background-color: var(--secondary);
   @media (min-width: 768px) {
     & {
       padding: 4rem 2rem;

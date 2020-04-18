@@ -10,6 +10,10 @@ const MainWrapper = styled.main`
   position: relative;
   box-shadow: 0 0px 5px 0 black;
 
+  @media (min-width: 768px) {
+    background-attachment: fixed;
+  }
+
   &::before {
     z-index: 0;
     content: "";

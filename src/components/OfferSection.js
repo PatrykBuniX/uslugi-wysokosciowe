@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-// import url from "../images/image3.jpg"
 import Window from "../icons/mycie_okien.svg"
 import url from "../images/image4.jpg"
 
@@ -20,14 +19,6 @@ const OfferSectionWrapper = styled.section`
   }
 `
 
-const OfferWrapper = styled.div`
-  flex: 1;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-`
-
 const HeroText = styled.div`
   display: flex;
   flex-direction: column;
@@ -44,6 +35,14 @@ const HeroText = styled.div`
   & > p {
     font-size: 1.5em;
   }
+`
+const OfferWrapper = styled.div`
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 0 10%;
 `
 
 const Offer = styled.div`

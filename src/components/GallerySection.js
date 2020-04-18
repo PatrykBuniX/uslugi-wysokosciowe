@@ -6,11 +6,12 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa"
 import image1 from "../images/image1.png"
 import image2 from "../images/image2.jpg"
 import image3 from "../images/image3.jpg"
+import image4 from "../images/image4.jpg"
 
 const GalleryWrapper = styled.section`
   display: flex;
   justify-content: center;
-  background-color: var(--primary);
+  background-color: var(--secondary);
   align-items: center;
   box-shadow: 0 5px 1px -5px black;
   position: relative;
@@ -46,8 +47,10 @@ const StyledImg = styled(motion.img)`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  margin: 0 auto;
+  /* width: 100%; */
+  /* height: 100%; */
 `
 
 const Button = styled.button`
@@ -78,7 +81,7 @@ const Button = styled.button`
 `
 
 const GallerySection = () => {
-  const images = [image1, image2, image3]
+  const images = [image1, image2, image3, image4]
   const [[page, direction], setPage] = useState([0, 0])
 
   const imageIndex = wrap(0, images.length, page)
@@ -105,7 +108,7 @@ const GallerySection = () => {
       />
       <HeroText>
         <h2>Galeria</h2>
-        <p>Zobacz jak wyglda moja praca.</p>
+        <p>Zobacz jak wyglada moja praca.</p>
       </HeroText>
       <ImgWrapper>
         <AnimatePresence initial={false}>
