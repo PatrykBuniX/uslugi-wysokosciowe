@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import Window from "../icons/mycie_okien.svg"
-import url from "../images/image4.jpg"
 import { FaPhone, FaTelegramPlane, FaFacebookSquare } from "react-icons/fa"
 
 const ContactSectionWrapper = styled.section`
@@ -11,9 +10,9 @@ const ContactSectionWrapper = styled.section`
   background-color: var(--secondary);
   background-position: center;
   background-size: cover;
-  box-shadow: 0 0px 5px 0 black;
   padding: 3rem 0;
   position: relative;
+  border-bottom: var(--border);
 
   @media (min-width: 768px) {
     background-attachment: fixed;
@@ -42,36 +41,42 @@ const ContactWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  padding: 0 10%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `
 
 const Contact = styled.div`
-  height: 300px;
-  height: 17rem;
-  width: 90%;
-  margin: 5%;
+  margin: 1rem 0;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
 
-  @media (min-width: 500px) {
-    width: 40%;
-    margin: 5%;
+  & > svg {
+    font-size: 2rem;
   }
-  @media (min-width: 900px) {
-    width: 22%;
-    margin: 1.5%;
+  & > svg {
+    font-size: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    margin: 0 1rem;
   }
 `
 
 const ContactText = styled.p`
-  margin-top: 1rem;
   padding: 1rem;
-  font-size: 1.1rem;
   text-align: center;
+  font-size: 1.25rem;
+  font-family: monospace;
+  white-space: pre;
 `
 
 const ContactSection = () => {
@@ -99,12 +104,7 @@ const ContactSection = () => {
         <Contact>
           <FaFacebookSquare />
           <h3>Facebook</h3>
-          <ContactText>...</ContactText>
-        </Contact>
-        <Contact>
-          <Window style={{ width: "25%" }} />
-          <h3>Mycie okien</h3>
-          <ContactText>blebleble</ContactText>
+          <ContactText></ContactText>
         </Contact>
       </ContactWrapper>
     </ContactSectionWrapper>

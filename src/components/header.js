@@ -102,20 +102,14 @@ const NavItem = styled.li`
   }
 `
 
-const Header = () => {
-  const [isNavOpen, setIsNavOpen] = useState(false)
-
-  const handleClick = () => {
-    console.log("xd")
-    setIsNavOpen(!isNavOpen)
-  }
+const Header = ({ isNavOpen, toggleNav }) => {
   return (
     <StyledHeader>
       <HeroNav>
         <StyledLink to="/">
           <Logo />
         </StyledLink>
-        <Burger isNavOpen={isNavOpen} handleClick={handleClick} />
+        <Burger isNavOpen={isNavOpen} toggleNav={toggleNav} />
       </HeroNav>
       <NavBar isNavOpen={isNavOpen}>
         <NavList>

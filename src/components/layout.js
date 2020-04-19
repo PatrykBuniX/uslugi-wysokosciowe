@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import styled, { createGlobalStyle } from "styled-components"
@@ -21,12 +21,20 @@ const GlobalStyle = createGlobalStyle`
 
   :root{
     --primary: #8DC1DF;
-    --secondary: #efefef;
+    --secondary: #f9f9f9;
+    --border: 1px solid black;
   }
 `
 
 const Wrapper = styled.div`
-  overflow: hidden;
+  overflow-x: hidden;
+`
+
+const Footer = styled.footer`
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background-color: var(--primary);
 `
 
 const Layout = ({ children }) => {
@@ -40,17 +48,24 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const [isNavOpen, setIsNavOpen] = useState(false)
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen)
+  }
+  const contentClick = () => {
+    setIsNavOpen(false)
+  }
+
   return (
     <>
       <GlobalStyle />
       <Wrapper>
-        <Header />
-        {children}
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <Header isNavOpen={isNavOpen} toggleNav={toggleNav} />
+        <div onClick={contentClick}>{children}</div>
+        <Footer>
+          &copy; {new Date().getFullYear()} Wszelkie prawa zastrzeżone!
+        </Footer>
       </Wrapper>
     </>
   )

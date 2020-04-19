@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import Window from "../icons/mycie_okien.svg"
-import url from "../images/image4.jpg"
 
 const OfferSectionWrapper = styled.section`
   display: flex;
@@ -10,7 +9,7 @@ const OfferSectionWrapper = styled.section`
   background-color: var(--secondary);
   background-position: center;
   background-size: cover;
-  box-shadow: 0 0px 5px 0 black;
+  border-bottom: var(--border);
   padding: 3rem 0;
   position: relative;
 
@@ -42,15 +41,19 @@ const OfferWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  padding: 0 10%;
+  padding: 0 5%;
+
+  @media (min-width: 1200px) {
+    padding: 0 10%;
+  }
 `
 
 const Offer = styled.div`
-  height: 300px;
   height: 17rem;
   width: 90%;
   margin: 5%;
   box-shadow: 0 0 15px -5px black;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -83,7 +86,7 @@ const OfferSection = () => {
       />
       <HeroText>
         <h2>Oferty</h2>
-        <p>Usługi najwyższej jakości</p>
+        <p>Usługi najwyższej jakości:</p>
       </HeroText>
       <OfferWrapper>
         <Offer>

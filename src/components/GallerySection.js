@@ -3,10 +3,10 @@ import styled from "styled-components"
 import { motion, AnimatePresence } from "framer-motion"
 import { wrap } from "@popmotion/popcorn"
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa"
-import image1 from "../images/image1.png"
-import image2 from "../images/image2.jpg"
-import image3 from "../images/image3.jpg"
-import image4 from "../images/image4.jpg"
+import image1 from "../images/image-about.jpg"
+import image2 from "../images/image-main.jpg"
+import image3 from "../images/image2.jpg"
+import image4 from "../images/image3.jpg"
 
 const GalleryWrapper = styled.section`
   display: flex;
@@ -16,7 +16,7 @@ const GalleryWrapper = styled.section`
   position: relative;
   padding: 3rem 0;
   flex-direction: column;
-  box-shadow: 0 0px 5px 0 black;
+  border-bottom: var(--border);
 `
 
 const HeroText = styled.div`
@@ -48,14 +48,20 @@ const StyledImg = styled(motion.img)`
   top: 0;
   left: 0;
   right: 0;
-  margin: 0 auto;
-  /* width: 100%; */
-  /* height: 100%; */
+  bottom: 0;
+  margin: auto auto;
+  width: 100%;
+  height: auto;
+
+  @media (min-width: 768px) {
+    width: auto;
+    height: 100%;
+  }
 `
 
 const Button = styled.button`
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   font-size: 2rem;
   display: flex;
   justify-content: center;
@@ -66,7 +72,7 @@ const Button = styled.button`
   color: white;
   border: none;
   transform: translateY(-50%);
-  ${({ go }) => (go === "prev" ? "left: 2%;" : "right: 2%;")}
+  ${({ go }) => (go === "prev" ? "left: 0;" : "right: 0;")}
 
   & > svg {
     transition: transform 0.2s ease-in-out;
@@ -87,9 +93,9 @@ const GallerySection = () => {
   const imageIndex = wrap(0, images.length, page)
 
   const variants = {
-    enter: { x: direction > 0 ? "100%" : "-100%", opacity: 1 },
+    enter: { x: direction > 0 ? 1000 : -1000, opacity: 1 },
     center: { zIndex: 1, x: 0, opacity: 1 },
-    exit: { zIndex: 0, x: direction < 0 ? "100%" : "-100%", opacity: 0 },
+    exit: { zIndex: 0, x: direction < 0 ? 1000 : -1000, opacity: 0 },
   }
 
   useEffect(() => {

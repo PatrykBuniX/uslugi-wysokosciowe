@@ -38,9 +38,9 @@ const Line = styled.div`
   transition: transform 0.2s ease-in-out;
 `
 
-const Burger = ({ handleClick, isNavOpen }) => {
+const Burger = ({ isNavOpen, toggleNav }) => {
   return (
-    <BurgerWrapper onClick={handleClick} active={isNavOpen}>
+    <BurgerWrapper onClick={toggleNav} active={isNavOpen}>
       <Line />
       <Line />
       <Line />

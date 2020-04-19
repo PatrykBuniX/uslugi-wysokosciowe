@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import img from "../images/image2.jpg"
+import img from "../images/image-main.jpg"
 
 const MainWrapper = styled.main`
   height: 100vh;
@@ -8,8 +8,7 @@ const MainWrapper = styled.main`
   background-size: cover;
   background-position: center;
   position: relative;
-  box-shadow: 0px 5px 5px 0px black;
-
+  border-bottom: var(--border);
   @media (min-width: 768px) {
     background-attachment: fixed;
   }
