@@ -52,7 +52,7 @@ const Offer = styled.div`
   height: 17rem;
   width: 90%;
   margin: 5%;
-  box-shadow: 0 0 15px -5px black;
+  box-shadow: 0 0 20px -15px black;
   background-color: white;
   display: flex;
   flex-direction: column;

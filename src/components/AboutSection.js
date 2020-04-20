@@ -25,11 +25,13 @@ const AboutWrapper = styled.section`
 const AboutText = styled.div`
   max-height: 75%;
   width: 100%;
-  background-color: var(--primary);
-  box-shadow: 0 0 15px -5px black;
+  /* background-color: var(--primary); */
+  /* box-shadow: 0 0 15px -5px black; */
   padding: 0.5rem;
+  background: white;
+  box-shadow: 0 0 20px -15px black;
 
-  &::before {
+  /* &::before {
     content: "Kim jestem?";
     color: white;
     font-weight: bold;
@@ -37,7 +39,7 @@ const AboutText = styled.div`
     position: relative;
     top: 0;
     left: 0;
-  }
+  } */
   @media (min-width: 768px) {
     & {
       flex: 1;
@@ -45,15 +47,15 @@ const AboutText = styled.div`
       margin-right: 1.5rem;
     }
 
-    &::before {
+    /* &::before {
       font-size: 3rem;
-    }
+    } */
   }
 `
 
 const AboutImgWrapper = styled.div`
   margin-left: 1.5rem;
-  box-shadow: 0 0 15px -5px black;
+  box-shadow: 0 0 20px -15px black;
   width: 30%;
   max-width: 300px;
 
@@ -63,7 +65,7 @@ const AboutImgWrapper = styled.div`
 `
 
 const AboutP = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   padding: 2rem 1rem;
 `
 
