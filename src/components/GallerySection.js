@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useRef } from "react"
 import styled from "styled-components"
+import { useStaticQuery, graphql } from "gatsby"
 import { motion, AnimatePresence } from "framer-motion"
 import { wrap } from "@popmotion/popcorn"
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa"
-import image1 from "../images/image-about.jpg"
-import image2 from "../images/image-main.jpg"
-import image3 from "../images/image2.jpg"
-import image4 from "../images/image3.jpg"
 
 const GalleryWrapper = styled.section`
   display: flex;
@@ -86,21 +83,16 @@ const Button = styled.button`
   }
 `
 
-const GallerySection = () => {
-  const images = [image1, image2, image3, image4]
+const GallerySection = ({ galleryImgs }) => {
   const [[page, direction], setPage] = useState([0, 0])
 
-  const imageIndex = wrap(0, images.length, page)
+  const imageIndex = wrap(0, galleryImgs.length, page)
 
   const variants = {
     enter: { x: direction > 0 ? 1000 : -1000, opacity: 1 },
     center: { zIndex: 1, x: 0, opacity: 1 },
     exit: { zIndex: 0, x: direction < 0 ? 1000 : -1000, opacity: 0 },
   }
-
-  useEffect(() => {
-    console.log(page, direction)
-  })
 
   const paginate = newDirection => {
     setPage([page + newDirection, newDirection])
@@ -120,8 +112,8 @@ const GallerySection = () => {
         <AnimatePresence initial={false}>
           <StyledImg
             key={page}
-            src={images[imageIndex]}
-            alt={`image${page}`}
+            src={galleryImgs[imageIndex].img.url}
+            alt={`image-${galleryImgs[imageIndex].img.fileName}`}
             variants={variants}
             initial="enter"
             animate="center"
