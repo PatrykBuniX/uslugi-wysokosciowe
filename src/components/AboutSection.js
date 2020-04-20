@@ -1,4 +1,6 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 import styled from "styled-components"
 import url from "../images/image-about.jpg"
 
@@ -49,9 +51,11 @@ const AboutText = styled.div`
   }
 `
 
-const AboutImg = styled.img`
+const AboutImgWrapper = styled.div`
   margin-left: 1.5rem;
   box-shadow: 0 0 15px -5px black;
+  width: 30%;
+  max-width: 300px;
 
   @media (max-width: 768px) {
     display: none;
@@ -64,6 +68,26 @@ const AboutP = styled.p`
 `
 
 const AboutSection = () => {
+  const {
+    file: {
+      childImageSharp: { fluid },
+    },
+  } = useStaticQuery(graphql`
+    query MyQuery {
+      file(relativePath: { eq: "image-about.jpg" }) {
+        childImageSharp {
+          fluid {
+            aspectRatio
+            base64
+            sizes
+            src
+            srcSet
+          }
+        }
+      }
+    }
+  `)
+  console.log(fluid)
   return (
     <AboutWrapper>
       <a
@@ -77,7 +101,9 @@ const AboutSection = () => {
           zadaniom których wykonanie wydawałoby się niemożliwe.
         </AboutP>
       </AboutText>
-      <AboutImg src={url} alt="me" />
+      <AboutImgWrapper>
+        <Img fluid={fluid} alt="xd" />
+      </AboutImgWrapper>
     </AboutWrapper>
   )
 }

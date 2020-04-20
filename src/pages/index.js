@@ -8,40 +8,22 @@ import OfferSection from "../components/OfferSection"
 import GallerySection from "../components/GallerySection"
 import ContectSection from "../components/ContactSection"
 import Break from "../components/Break"
+import image1 from "../images/image1.png"
+import image2 from "../images/image2.jpg"
+import image3 from "../images/image3.jpg"
 
-const IndexPage = () => {
-  const {
-    gallery: { galleryImgs },
-  } = useStaticQuery(
-    graphql`
-      query {
-        gallery {
-          galleryImgs {
-            img {
-              url
-              size
-              fileName
-            }
-          }
-        }
-      }
-    `
-  )
-
-  console.log(galleryImgs[2].img.fileName)
-  return (
-    <Layout>
-      <SEO />
-      <MainSection />
-      <AboutSection />
-      <Break url={galleryImgs[2].img.url} />
-      <OfferSection />
-      <Break url={galleryImgs[1].img.url} />
-      <GallerySection galleryImgs={galleryImgs} />
-      <Break url={galleryImgs[0].img.url} />
-      <ContectSection />
-    </Layout>
-  )
-}
+const IndexPage = () => (
+  <Layout>
+    <SEO />
+    <MainSection />
+    <AboutSection />
+    <Break url={image3} />
+    <OfferSection />
+    <Break url={image2} />
+    <GallerySection />
+    <Break url={image1} />
+    <ContectSection />
+  </Layout>
+)
 
 export default IndexPage

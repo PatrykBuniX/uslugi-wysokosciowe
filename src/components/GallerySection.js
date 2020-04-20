@@ -83,7 +83,24 @@ const Button = styled.button`
   }
 `
 
-const GallerySection = ({ galleryImgs }) => {
+const GallerySection = () => {
+  const {
+    gallery: { galleryImgs },
+  } = useStaticQuery(
+    graphql`
+      query {
+        gallery {
+          galleryImgs {
+            img {
+              url
+              size
+              fileName
+            }
+          }
+        }
+      }
+    `
+  )
   const [[page, direction], setPage] = useState([0, 0])
 
   const imageIndex = wrap(0, galleryImgs.length, page)
