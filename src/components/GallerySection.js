@@ -23,6 +23,7 @@ const HeroText = styled.div`
   align-items: center;
   margin-bottom: 3rem;
   font-size: 1rem;
+  text-align: center;
 
   & > h2 {
     font-size: 2em;
@@ -33,9 +34,10 @@ const HeroText = styled.div`
 `
 
 const ImgWrapper = styled.div`
-  min-height: 550px;
+  height: 45vw;
+  max-height: calc(100vh - 10rem);
   width: 100%;
-  max-width: 1000px;
+  max-width: 80vw;
   position: relative;
   overflow: hidden;
 `
@@ -59,11 +61,11 @@ const StyledImg = styled(motion.img)`
 const Button = styled.button`
   position: absolute;
   z-index: 1;
-  font-size: 2rem;
+  font-size: calc(1rem + 1vw);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: 0.75rem;
   top: 50%;
   background-color: black;
   color: white;
