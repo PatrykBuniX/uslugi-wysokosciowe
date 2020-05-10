@@ -43,6 +43,7 @@ const NavBar = styled.nav`
       position: static;
       transform: unset;
       width: unset;
+      box-shadow: unset;
     }
   }
 `
