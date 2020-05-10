@@ -25,31 +25,26 @@ const AboutWrapper = styled.section`
 const AboutText = styled.div`
   max-height: 75%;
   width: 100%;
-  /* background-color: var(--primary); */
-  /* box-shadow: 0 0 15px -5px black; */
   padding: 0.5rem;
-  background: white;
-  box-shadow: 0 0 20px -15px black;
 
-  /* &::before {
-    content: "Kim jestem?";
-    color: white;
-    font-weight: bold;
-    font-size: 2rem;
-    position: relative;
-    top: 0;
-    left: 0;
-  } */
   @media (min-width: 768px) {
     & {
       flex: 1;
       max-width: 600px;
       margin-right: 1.5rem;
     }
-
-    /* &::before {
-      font-size: 3rem;
-    } */
+  }
+`
+const AboutH = styled.h2`
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 7rem;
+    height: 6px;
+    background-color: black;
   }
 `
 
@@ -97,6 +92,7 @@ const AboutSection = () => {
         id="about"
       />
       <AboutText>
+        <AboutH>O Mnie</AboutH>
         <AboutP>
           Jestem... Oferuję szeroką gamę usług związanych z pracami na wysokości
           przy użyciu technik dostępu linowego. Jestem w stanie sprostać
