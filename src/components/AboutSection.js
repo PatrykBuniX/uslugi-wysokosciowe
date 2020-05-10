@@ -9,7 +9,7 @@ const AboutWrapper = styled.section`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 2rem;
+  padding: 0.5rem;
   border-bottom: var(--border);
   position: relative;
   background-color: var(--secondary);

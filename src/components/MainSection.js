@@ -37,9 +37,9 @@ const ContentWrapper = styled.div`
 
 const HeroText = styled.h1`
   font-weight: bold;
-  font-size: calc(3rem + 1vw);
+  font-size: calc(2.5rem + 1vw);
   color: white;
-  padding-left: 1rem;
+  padding: 0 0.5rem;
   text-shadow: 2px 2px 5px black;
   @media (min-width: 768px) {
     & {
