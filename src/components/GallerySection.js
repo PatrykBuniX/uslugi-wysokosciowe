@@ -103,18 +103,22 @@ const GallerySection = () => {
       }
     `
   )
-  const [[page, direction], setPage] = useState([0, 0])
-
-  const imageIndex = wrap(0, galleryImgs.length, page)
+  const [page, setPage] = useState(0)
 
   const variants = {
-    enter: { x: direction > 0 ? 1000 : -1000, opacity: 1 },
-    center: { zIndex: 1, x: 0, opacity: 1 },
-    exit: { zIndex: 0, x: direction < 0 ? 1000 : -1000, opacity: 0 },
+    enter: { opacity: 1, scale: 0 },
+    center: { opacity: 1, scale: 1 },
+    exit: { zIndex: 1, opacity: 0, scale: 0 },
   }
 
-  const paginate = newDirection => {
-    setPage([page + newDirection, newDirection])
+  const paginate = direction => {
+    let newPage = page + direction
+    if (newPage < 0) {
+      newPage = 0
+    } else if (newPage > galleryImgs.length - 1) {
+      newPage = galleryImgs.length - 1
+    }
+    setPage(newPage)
   }
 
   return (
@@ -131,22 +135,22 @@ const GallerySection = () => {
         <AnimatePresence initial={false}>
           <StyledImg
             key={page}
-            src={galleryImgs[imageIndex].img.url}
-            alt={`image-${galleryImgs[imageIndex].img.fileName}`}
+            src={galleryImgs[page].img.url}
+            alt={`image-${galleryImgs[page].img.fileName}`}
             variants={variants}
             initial="enter"
             animate="center"
             exit="exit"
             transition={{
-              x: { duration: 0.5 },
               opacity: { duration: 0.5 },
+              scale: { duration: 0.5 },
             }}
           />
         </AnimatePresence>
         <Button go="prev" onClick={() => paginate(-1)}>
           <FaAngleLeft />
         </Button>
-        <Button go="next" onClick={() => paginate(1)}>
+        <Button disabled={false} go="next" onClick={() => paginate(1)}>
           <FaAngleRight />
         </Button>
       </ImgWrapper>
