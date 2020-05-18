@@ -115,6 +115,7 @@ const GallerySection = () => {
     `
   )
   const [page, setPage] = useState(0)
+  const [canPaginate, setCanPaginate] = useState(true)
 
   const variants = {
     enter: { opacity: 1, scale: 0 },
@@ -123,6 +124,7 @@ const GallerySection = () => {
   }
 
   const paginate = direction => {
+    if (!canPaginate) return
     let newPage = page + direction
     if (newPage < 0) {
       newPage = 0
@@ -130,7 +132,17 @@ const GallerySection = () => {
       newPage = galleryImgs.length - 1
     }
     setPage(newPage)
+    setCanPaginate(false)
   }
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setCanPaginate(true)
+    }, 500)
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [page])
 
   return (
     <GalleryWrapper>
