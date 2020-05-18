@@ -83,6 +83,17 @@ const Button = styled.button`
       transform: scale(1.5);
     }
   }
+  &:disabled {
+    background-color: #aaaaaa;
+    color: #666666;
+
+    &:hover {
+      cursor: default;
+      & svg {
+        transform: none;
+      }
+    }
+  }
 `
 
 const GallerySection = () => {
@@ -147,10 +158,14 @@ const GallerySection = () => {
             }}
           />
         </AnimatePresence>
-        <Button go="prev" onClick={() => paginate(-1)}>
+        <Button disabled={page === 0} go="prev" onClick={() => paginate(-1)}>
           <FaAngleLeft />
         </Button>
-        <Button disabled={false} go="next" onClick={() => paginate(1)}>
+        <Button
+          disabled={page === galleryImgs.length - 1}
+          go="next"
+          onClick={() => paginate(1)}
+        >
           <FaAngleRight />
         </Button>
       </ImgWrapper>
