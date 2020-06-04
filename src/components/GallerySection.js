@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
-import { motion, AnimatePresence } from "framer-motion"
-import { wrap } from "@popmotion/popcorn"
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa"
 
 const GalleryWrapper = styled.section`
@@ -42,15 +40,30 @@ const ImgWrapper = styled.div`
   overflow: hidden;
 `
 
-const StyledImg = styled(motion.img)`
+const StyledImg = styled.img`
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  margin: auto auto;
-  width: 100%;
-  height: auto;
+  margin: 0 auto;
+  width: auto;
+  height: 100%;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+
+  &.prev {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  &.current {
+    transform: translateX(0%);
+    z-index: 1;
+    opacity: 1;
+  }
+  &.next {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 
   @media (min-width: 768px) {
     width: auto;
@@ -114,35 +127,29 @@ const GallerySection = () => {
       }
     `
   )
-  const [page, setPage] = useState(0)
-  const [canPaginate, setCanPaginate] = useState(true)
+  const [imgIndex, setImgIndex] = useState(0)
+  const [canSlide, setCanSlide] = useState(true)
 
-  const variants = {
-    enter: { opacity: 1, scale: 0 },
-    center: { opacity: 1, scale: 1 },
-    exit: { zIndex: 1, opacity: 0, scale: 0 },
-  }
-
-  const paginate = direction => {
-    if (!canPaginate) return
-    let newPage = page + direction
-    if (newPage < 0) {
-      newPage = 0
-    } else if (newPage > galleryImgs.length - 1) {
-      newPage = galleryImgs.length - 1
+  const slide = direction => {
+    if (!canSlide) return
+    let newImgIndex = imgIndex + direction
+    if (newImgIndex < 0) {
+      newImgIndex = 0
+    } else if (newImgIndex > galleryImgs.length - 1) {
+      newImgIndex = galleryImgs.length - 1
     }
-    setPage(newPage)
-    setCanPaginate(false)
+    setImgIndex(newImgIndex)
+    setCanSlide(false)
   }
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setCanPaginate(true)
+      setCanSlide(true)
     }, 500)
     return () => {
       clearTimeout(timeout)
     }
-  }, [page])
+  }, [imgIndex])
 
   return (
     <GalleryWrapper>
@@ -155,28 +162,28 @@ const GallerySection = () => {
         <p>Zobacz jak wyglada moja praca.</p>
       </HeroText>
       <ImgWrapper>
-        <AnimatePresence initial={false}>
-          <StyledImg
-            key={page}
-            src={galleryImgs[page].img.url}
-            alt={`image-${galleryImgs[page].img.fileName}`}
-            variants={variants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-              opacity: { duration: 0.5 },
-              scale: { duration: 0.5 },
-            }}
-          />
-        </AnimatePresence>
-        <Button disabled={page === 0} go="prev" onClick={() => paginate(-1)}>
+        {galleryImgs &&
+          galleryImgs.map(({ img }, index) => (
+            <StyledImg
+              key={img.fileName + index}
+              className={
+                index === imgIndex
+                  ? "current"
+                  : index < imgIndex
+                  ? "prev"
+                  : "next"
+              }
+              src={img.url}
+              alt={img.fileName}
+            />
+          ))}
+        <Button disabled={imgIndex === 0} go="prev" onClick={() => slide(-1)}>
           <FaAngleLeft />
         </Button>
         <Button
-          disabled={page === galleryImgs.length - 1}
+          disabled={imgIndex === galleryImgs.length - 1}
           go="next"
-          onClick={() => paginate(1)}
+          onClick={() => slide(1)}
         >
           <FaAngleRight />
         </Button>
