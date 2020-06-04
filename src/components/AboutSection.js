@@ -2,7 +2,6 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
-import url from "../images/image-about.jpg"
 
 const AboutWrapper = styled.section`
   display: flex;
@@ -13,6 +12,7 @@ const AboutWrapper = styled.section`
   border-bottom: var(--border);
   position: relative;
   background-color: var(--secondary);
+  padding: 2rem 2rem;
   @media (min-width: 768px) {
     & {
       padding: 4rem 2rem;
@@ -84,7 +84,6 @@ const AboutSection = () => {
       }
     }
   `)
-  console.log(fluid)
   return (
     <AboutWrapper>
       <a

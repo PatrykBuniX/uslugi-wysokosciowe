@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 
 const BurgerWrapper = styled.div`
@@ -46,6 +47,10 @@ const Burger = ({ isNavOpen, toggleNav }) => {
       <Line />
     </BurgerWrapper>
   )
+}
+Burger.propTypes = {
+  isNavOpen: PropTypes.bool,
+  toggleNav: PropTypes.func,
 }
 
 export default Burger

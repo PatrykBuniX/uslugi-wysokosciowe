@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import Window from "../icons/mycie_okien.svg"
 import { FaPhone, FaTelegramPlane, FaFacebookSquare } from "react-icons/fa"
 
 const ContactSectionWrapper = styled.section`

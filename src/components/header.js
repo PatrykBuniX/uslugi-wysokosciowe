@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import Logo from "../icons/logo.svg"
 import Burger from "../components/Burger"
@@ -130,5 +130,10 @@ const Header = ({ isNavOpen, toggleNav }) => {
       </NavBar>
     </StyledHeader>
   )
+}
+
+Header.propTypes = {
+  isNavOpen: PropTypes.bool,
+  toggleNav: PropTypes.func,
 }
 export default Header

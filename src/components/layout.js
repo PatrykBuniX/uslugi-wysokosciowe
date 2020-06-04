@@ -1,8 +1,6 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 import styled, { createGlobalStyle } from "styled-components"
-
 import Header from "./header"
 
 const GlobalStyle = createGlobalStyle`
@@ -38,16 +36,6 @@ const Footer = styled.footer`
 `
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   const [isNavOpen, setIsNavOpen] = useState(false)
 
   const toggleNav = () => {

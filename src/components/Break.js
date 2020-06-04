@@ -1,5 +1,5 @@
 import React from "react"
-import Img from "gatsby-image"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 
 const BreakWrapper = styled.div`
@@ -31,5 +31,7 @@ const BreakWrapper = styled.div`
 const Break = ({ url }) => {
   return <BreakWrapper url={url}></BreakWrapper>
 }
-
+Break.propTypes = {
+  url: PropTypes.string,
+}
 export default Break
