@@ -35,9 +35,12 @@ const ImgWrapper = styled.div`
   height: 45vw;
   max-height: calc(100vh - 10rem);
   width: 100%;
-  max-width: 80vw;
   position: relative;
   overflow: hidden;
+
+  @media (min-width: 768px) {
+    max-width: 80vw;
+  }
 `
 
 const StyledImg = styled.img`
@@ -63,11 +66,6 @@ const StyledImg = styled.img`
   &.next {
     transform: translateX(100%);
     opacity: 0;
-  }
-
-  @media (min-width: 768px) {
-    width: auto;
-    height: 100%;
   }
 `
 
