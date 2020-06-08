@@ -13,6 +13,7 @@ const AboutWrapper = styled.section`
   position: relative;
   background-color: var(--secondary);
   padding: 2rem 2rem;
+  max-height: 70vh;
   @media (min-width: 768px) {
     & {
       padding: 4rem 2rem;
@@ -52,7 +53,7 @@ const AboutImgWrapper = styled.div`
   margin-left: 1.5rem;
   box-shadow: 0 0 20px -15px black;
   width: 30%;
-  max-width: 300px;
+  max-width: 250px;
 
   @media (max-width: 768px) {
     display: none;
@@ -99,7 +100,7 @@ const AboutSection = () => {
         </AboutP>
       </AboutText>
       <AboutImgWrapper>
-        <Img fluid={fluid} alt="xd" />
+        <Img fluid={fluid} alt="my-picture" />
       </AboutImgWrapper>
     </AboutWrapper>
   )

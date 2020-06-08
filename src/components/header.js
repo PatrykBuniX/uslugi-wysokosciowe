@@ -56,6 +56,10 @@ const HeroNav = styled.div`
   align-items: center;
   background-color: white;
 
+  & > a {
+    margin-left: 1rem;
+  }
+
   @media (min-width: 768px) {
     & {
       position: unset;
