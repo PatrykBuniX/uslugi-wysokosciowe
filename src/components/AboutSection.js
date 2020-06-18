@@ -26,13 +26,13 @@ const AboutWrapper = styled.section`
 const AboutText = styled.div`
   max-height: 75%;
   width: 100%;
-  padding: 0.5rem;
+  padding: 1.5rem;
+  background-color: var(--primary);
 
   @media (min-width: 768px) {
     & {
       flex: 1;
-      max-width: 600px;
-      margin-right: 1.5rem;
+      max-width: 500px;
     }
   }
 `
@@ -50,7 +50,7 @@ const AboutH = styled.h2`
 `
 
 const AboutImgWrapper = styled.div`
-  margin-left: 1.5rem;
+  margin-left: -1rem;
   box-shadow: 0 0 20px -15px black;
   width: 30%;
   max-width: 250px;
@@ -62,7 +62,7 @@ const AboutImgWrapper = styled.div`
 
 const AboutP = styled.p`
   font-size: 1.25rem;
-  padding: 2rem 1rem;
+  padding: 2rem;
 `
 
 const AboutSection = () => {
