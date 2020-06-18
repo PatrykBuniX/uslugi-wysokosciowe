@@ -91,7 +91,7 @@ const NavList = styled.ul`
 `
 
 const NavItem = styled.li`
-  margin: 0 1rem;
+  margin: 1rem 0;
   & > a {
     color: gray;
     text-decoration: none;
@@ -100,9 +100,9 @@ const NavItem = styled.li`
       color: black;
     }
   }
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
     & {
-      margin: 1rem 0;
+      margin: 0 1rem;
     }
   }
 `
