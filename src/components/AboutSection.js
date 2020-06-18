@@ -26,12 +26,13 @@ const AboutWrapper = styled.section`
 const AboutText = styled.div`
   max-height: 75%;
   width: 100%;
-  padding: 1.5rem;
+  padding: 1rem;
   background-color: var(--primary);
 
   @media (min-width: 768px) {
     & {
       flex: 1;
+      padding: 1.5rem;
       max-width: 500px;
     }
   }
@@ -62,7 +63,10 @@ const AboutImgWrapper = styled.div`
 
 const AboutP = styled.p`
   font-size: 1.25rem;
-  padding: 2rem;
+  padding: 2rem 0;
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
 `
 
 const AboutSection = () => {
