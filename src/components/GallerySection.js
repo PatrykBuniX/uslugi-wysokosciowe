@@ -32,13 +32,14 @@ const HeroText = styled.div`
 `
 
 const ImgWrapper = styled.div`
-  height: 45vw;
   max-height: calc(100vh - 10rem);
-  width: 100%;
   position: relative;
   overflow: hidden;
+  width: 100%;
+  height: 90vh;
 
   @media (min-width: 768px) {
+    height: 45vw;
     max-width: 80vw;
   }
 `
@@ -49,9 +50,9 @@ const StyledImg = styled.img`
   left: 0;
   right: 0;
   bottom: 0;
-  margin: 0 auto;
-  width: auto;
-  height: 100%;
+  width: 100%;
+  height: auto;
+  margin: auto;
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 
   &.prev {
@@ -66,6 +67,11 @@ const StyledImg = styled.img`
   &.next {
     transform: translateX(100%) scale(0.5);
     opacity: 0;
+  }
+
+  @media (min-width: 768px) {
+    width: auto;
+    height: 100%;
   }
 `
 
