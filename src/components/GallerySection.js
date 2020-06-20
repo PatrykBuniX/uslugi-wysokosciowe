@@ -37,7 +37,8 @@ const ImgWrapper = styled.div`
   overflow: hidden;
   width: 100%;
   height: 90vh;
-
+  /*disable double-tap "zoom" on mobile*/
+  touch-action: manipulation;
   @media (min-width: 768px) {
     height: 45vw;
     max-width: 80vw;
@@ -53,6 +54,7 @@ const StyledImg = styled.img`
   width: 100%;
   height: auto;
   margin: auto;
+  touch-action: manipulation;
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 
   &.prev {
@@ -87,6 +89,7 @@ const Button = styled.button`
   background-color: black;
   color: white;
   border: none;
+  touch-action: manipulation;
   transform: translateY(-50%);
   ${({ go }) => (go === "prev" ? "left: 0;" : "right: 0;")}
 
