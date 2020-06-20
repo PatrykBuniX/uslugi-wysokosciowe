@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Górka - usługi wysokościowe`,
-    description: `Usługi wysokościowe na najwyższym poziomie.`,
-    author: `@patrykbunix`,
+    description: `Usługi wysokościowe na najwyższym poziomie. Oferuję szeroką gamę usług wysokościowych i alpinistycznych. Mycie, czyszczenie, malowanie, odnawianie, montaż... `,
+    author: `@patrykgorka`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -18,11 +18,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Górka - usługi wysokościowe`,
+        short_name: `firmagorka`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#8DC1DF`,
+        theme_color: `#8DC1DF`,
         display: `minimal-ui`,
         icon: `src/icons/icon.svg`,
       },
