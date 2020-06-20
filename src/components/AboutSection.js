@@ -12,8 +12,7 @@ const AboutWrapper = styled.section`
   border-bottom: var(--border);
   position: relative;
   background-color: var(--secondary);
-  padding: 2rem 2rem;
-  max-height: 70vh;
+  padding: 2rem 1rem;
   @media (min-width: 768px) {
     & {
       padding: 4rem 2rem;
@@ -51,13 +50,13 @@ const AboutH = styled.h2`
 `
 
 const AboutImgWrapper = styled.div`
-  margin-left: -1rem;
+  margin: -1rem 0 0 0;
   box-shadow: 0 0 20px -15px black;
-  width: 30%;
-  max-width: 250px;
+  width: calc(250px + 4vw);
+  max-width: 300px;
 
-  @media (max-width: 768px) {
-    display: none;
+  @media (min-width: 768px) {
+    margin-left: 0 0 0 -1rem;
   }
 `
 
