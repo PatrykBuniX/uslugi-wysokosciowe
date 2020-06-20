@@ -55,7 +55,7 @@ const StyledImg = styled.img`
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 
   &.prev {
-    transform: translateX(-100%);
+    transform: translateX(-100%) scale(0.5);
     opacity: 0;
   }
   &.current {
@@ -64,7 +64,7 @@ const StyledImg = styled.img`
     opacity: 1;
   }
   &.next {
-    transform: translateX(100%);
+    transform: translateX(100%) scale(0.5);
     opacity: 0;
   }
 `
