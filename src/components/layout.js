@@ -30,9 +30,19 @@ const Wrapper = styled.div`
 
 const Footer = styled.footer`
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 1rem;
   background-color: var(--primary);
+`
+const IconsLink = styled.p`
+  margin-top: 0.5rem;
+  font-size: 0.6rem;
+
+  & a {
+    color: black;
+  }
 `
 
 const Layout = ({ children }) => {
@@ -52,7 +62,29 @@ const Layout = ({ children }) => {
         <Header isNavOpen={isNavOpen} toggleNav={toggleNav} />
         <div onClick={contentClick}>{children}</div>
         <Footer>
-          &copy; {new Date().getFullYear()} Wszelkie prawa zastrzeżone!
+          <p>&copy; {new Date().getFullYear()} Wszelkie prawa zastrzeżone!</p>
+          <IconsLink>
+            Icons made by{" "}
+            <a href="https://www.flaticon.com/authors/becris" title="Becris">
+              Becris
+            </a>
+            ,
+            <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
+              Freepik
+            </a>
+            ,
+            <a
+              href="https://www.flaticon.com/authors/skyclick"
+              title="Skyclick"
+            >
+              Skyclick
+            </a>{" "}
+            from{" "}
+            <a href="https://www.flaticon.com/" title="Flaticon">
+              {" "}
+              www.flaticon.com
+            </a>{" "}
+          </IconsLink>
         </Footer>
       </Wrapper>
     </>

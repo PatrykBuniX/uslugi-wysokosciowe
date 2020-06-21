@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { FaPhone, FaTelegramPlane, FaFacebookSquare } from "react-icons/fa"
+import { FaPhone, FaTelegramPlane } from "react-icons/fa"
 
 const ContactSectionWrapper = styled.section`
   display: flex;
@@ -99,11 +99,6 @@ const ContactSection = () => {
           <FaTelegramPlane />
           <h3>Napisz</h3>
           <ContactText>firmagorka@gmail.com</ContactText>
-        </Contact>
-        <Contact>
-          <FaFacebookSquare />
-          <h3>Facebook</h3>
-          <ContactText></ContactText>
         </Contact>
       </ContactWrapper>
     </ContactSectionWrapper>

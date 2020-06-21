@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Window from "../icons/mycie_okien.svg"
+import Window from "../icons/clean.svg"
 import Roof from "../icons/roof.svg"
 import TreeCut from "../icons/treecut.svg"
 import VacuumCleaner from "../icons/vacuum-cleaner.svg"
