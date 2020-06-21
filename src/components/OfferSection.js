@@ -46,9 +46,12 @@ const OfferWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 0 5%;
 
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+  }
   @media (min-width: 1200px) {
     padding: 0 15%;
   }
