@@ -1,6 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 import Window from "../icons/mycie_okien.svg"
+import Roof from "../icons/roof.svg"
+import TreeCut from "../icons/treecut.svg"
+import VacuumCleaner from "../icons/vacuum-cleaner.svg"
+import Chimney from "../icons/chimney.svg"
+import Tick from "../icons/tick.svg"
 
 const OfferSectionWrapper = styled.section`
   display: flex;
@@ -27,6 +32,7 @@ const HeroText = styled.div`
   font-size: 1rem;
   padding: 1rem 0;
   text-shadow: 0px 0px 10px white;
+  text-align: center;
 
   & > h2 {
     font-size: 2em;
@@ -44,13 +50,13 @@ const OfferWrapper = styled.div`
   padding: 0 5%;
 
   @media (min-width: 1200px) {
-    padding: 0 10%;
+    padding: 0 15%;
   }
 `
 
 const Offer = styled.div`
-  height: 17rem;
-  width: 90%;
+  height: 12rem;
+  width: 80%;
   margin: 5%;
   box-shadow: 0 0 20px -15px black;
   background-color: white;
@@ -58,7 +64,16 @@ const Offer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 0.4rem solid var(--primary);
+
+  & > svg {
+    width: 30%;
+  }
+  & > h3 {
+    margin-top: 1.5rem;
+  }
 
   @media (min-width: 500px) {
     width: 40%;
@@ -68,13 +83,6 @@ const Offer = styled.div`
     width: 22%;
     margin: 1.5%;
   }
-`
-
-const OfferText = styled.p`
-  margin-top: 1rem;
-  padding: 1rem;
-  font-size: 1.1rem;
-  text-align: center;
 `
 
 const OfferSection = () => {
@@ -90,36 +98,28 @@ const OfferSection = () => {
       </HeroText>
       <OfferWrapper>
         <Offer>
-          <Window style={{ width: "25%" }} />
-          <h3>Mycie okien</h3>
-          <OfferText>
-            Mycie okien przy uzyciu profesjalnego sprzętu i specjalnych
-            środków...
-          </OfferText>
+          <Window />
+          <h3>Mycie szyb</h3>
         </Offer>
         <Offer>
-          <Window style={{ width: "25%" }} />
-          <h3>Mycie okien</h3>
-          <OfferText>
-            Mycie okien przy uzyciu profesjalnego sprzętu i specjalnych
-            środków...
-          </OfferText>
+          <Roof />
+          <h3>Czyszczenie dachów</h3>
         </Offer>
         <Offer>
-          <Window style={{ width: "25%" }} />
-          <h3>Mycie okien</h3>
-          <OfferText>
-            Mycie okien przy uzyciu profesjalnego sprzętu i specjalnych
-            środków...
-          </OfferText>
+          <TreeCut />
+          <h3>Wycinka drzew</h3>
         </Offer>
         <Offer>
-          <Window style={{ width: "25%" }} />
-          <h3>Mycie okien</h3>
-          <OfferText>
-            Mycie okien przy uzyciu profesjalnego sprzętu i specjalnych
-            środków...
-          </OfferText>
+          <VacuumCleaner />
+          <h3>Odkurzanie miejsc trudno dostępnych</h3>
+        </Offer>
+        <Offer>
+          <Chimney />
+          <h3>Mycie kominów</h3>
+        </Offer>
+        <Offer>
+          <Tick />
+          <h3>I wiele więcej usług na wysokości</h3>
         </Offer>
       </OfferWrapper>
     </OfferSectionWrapper>
