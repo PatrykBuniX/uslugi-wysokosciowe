@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
-import gsap from "gsap"
+import gsap, { Sine } from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -13,12 +13,14 @@ const setUpScrollTrigger = () => {
     x: -200,
     autoAlpha: 0,
     duration: 0.5,
+    ease: Sine.easeOut,
   })
   gsap.from(".about-img", {
     scrollTrigger: ".about-img",
     x: 200,
     autoAlpha: 0,
     duration: 0.5,
+    ease: Sine.easeOut,
   })
 }
 

@@ -6,7 +6,7 @@ import TreeCut from "../icons/treecut.svg"
 import VacuumCleaner from "../icons/vacuum-cleaner.svg"
 import Chimney from "../icons/chimney.svg"
 import Tick from "../icons/tick.svg"
-import gsap from "gsap"
+import gsap, { Back, Sine } from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -20,14 +20,16 @@ const setUpScrollTrigger = () => {
         x: index % 2 == 0 ? -200 : 200,
         autoAlpha: 0,
         duration: 0.5,
+        ease: Back.easeOut.config(1.7),
       })
     })
   } else {
     gsap.from(".offer", {
-      scrollTrigger: ".offer",
+      scrollTrigger: { trigger: ".offer", start: "25% bottom" },
       scale: 0.5,
       autoAlpha: 0,
       duration: 0.5,
+      ease: Sine.easeOut,
     })
   }
 }
