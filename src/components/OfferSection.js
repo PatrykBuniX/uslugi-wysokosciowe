@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import Window from "../icons/clean.svg"
 import Roof from "../icons/roof.svg"
@@ -6,6 +6,31 @@ import TreeCut from "../icons/treecut.svg"
 import VacuumCleaner from "../icons/vacuum-cleaner.svg"
 import Chimney from "../icons/chimney.svg"
 import Tick from "../icons/tick.svg"
+import gsap from "gsap"
+import ScrollTrigger from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
+
+const setUpScrollTrigger = () => {
+  if (window.innerWidth < 768) {
+    const offers = document.querySelectorAll(".offer")
+    offers.forEach((offer, index) => {
+      gsap.from(`.offer-${index + 1}`, {
+        scrollTrigger: { trigger: `.offer-${index + 1}`, start: "25% bottom" },
+        x: index % 2 == 0 ? -200 : 200,
+        autoAlpha: 0,
+        duration: 0.5,
+      })
+    })
+  } else {
+    gsap.from(".offer", {
+      scrollTrigger: ".offer",
+      scale: 0.5,
+      autoAlpha: 0,
+      duration: 0.5,
+    })
+  }
+}
 
 const OfferSectionWrapper = styled.section`
   display: flex;
@@ -89,6 +114,9 @@ const Offer = styled.div`
 `
 
 const OfferSection = () => {
+  useEffect(() => {
+    setUpScrollTrigger()
+  }, [])
   return (
     <OfferSectionWrapper>
       <a
@@ -100,27 +128,27 @@ const OfferSection = () => {
         <p>Usługi najwyższej jakości:</p>
       </HeroText>
       <OfferWrapper>
-        <Offer>
+        <Offer className="offer offer-1">
           <Window />
           <h3>Mycie szyb</h3>
         </Offer>
-        <Offer>
+        <Offer className="offer offer-2">
           <Roof />
           <h3>Czyszczenie dachów</h3>
         </Offer>
-        <Offer>
+        <Offer className="offer offer-3">
           <TreeCut />
           <h3>Wycinka drzew</h3>
         </Offer>
-        <Offer>
+        <Offer className="offer offer-4">
           <VacuumCleaner />
           <h3>Odkurzanie miejsc trudno dostępnych</h3>
         </Offer>
-        <Offer>
+        <Offer className="offer offer-5">
           <Chimney />
           <h3>Mycie kominów</h3>
         </Offer>
-        <Offer>
+        <Offer className="offer offer-6">
           <Tick />
           <h3>I wiele więcej usług na wysokości</h3>
         </Offer>

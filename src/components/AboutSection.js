@@ -1,7 +1,26 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
+import gsap from "gsap"
+import ScrollTrigger from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
+
+const setUpScrollTrigger = () => {
+  gsap.from(".about-text", {
+    scrollTrigger: ".about-text",
+    x: -200,
+    autoAlpha: 0,
+    duration: 0.5,
+  })
+  gsap.from(".about-img", {
+    scrollTrigger: ".about-img",
+    x: 200,
+    autoAlpha: 0,
+    duration: 0.5,
+  })
+}
 
 const AboutWrapper = styled.section`
   display: flex;
@@ -88,13 +107,16 @@ const AboutSection = () => {
       }
     }
   `)
+  useEffect(() => {
+    setUpScrollTrigger()
+  }, [])
   return (
     <AboutWrapper>
       <a
         style={{ visibility: "hidden", position: "absolute", top: "-5rem" }}
         id="about"
       />
-      <AboutText>
+      <AboutText className="about-text">
         <AboutH>O Mnie</AboutH>
         <AboutP>
           Jestem... Oferuję szeroką gamę usług związanych z pracami na wysokości
@@ -102,7 +124,7 @@ const AboutSection = () => {
           zadaniom których wykonanie wydawałoby się niemożliwe.
         </AboutP>
       </AboutText>
-      <AboutImgWrapper>
+      <AboutImgWrapper className="about-img">
         <Img fluid={fluid} alt="my-picture" />
       </AboutImgWrapper>
     </AboutWrapper>
