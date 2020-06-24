@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
   }
 
+
   body{
     font-family: 'Lato', sans-serif;
   }
