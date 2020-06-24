@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
 
 
   body{
-    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 
   :root{
