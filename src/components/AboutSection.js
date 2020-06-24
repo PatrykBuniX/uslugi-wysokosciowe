@@ -48,13 +48,25 @@ const AboutText = styled.div`
   width: 100%;
   padding: 1rem;
   background-color: var(--primary);
-
+  position: relative;
   @media (min-width: 768px) {
     & {
       flex: 1;
       padding: 1.5rem;
       max-width: 500px;
     }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 2rem;
+    right: -2rem;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary);
+    opacity: 0.25;
+    z-index: -1;
   }
 `
 const AboutH = styled.h2`
@@ -78,6 +90,18 @@ const AboutImgWrapper = styled.div`
 
   @media (min-width: 768px) {
     margin-left: 0 0 0 -1rem;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary);
+    opacity: 0.25;
+    z-index: -1;
   }
 `
 
