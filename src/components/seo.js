@@ -1,16 +1,8 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
-import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta }) {
+function SEO() {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -25,27 +17,27 @@ function SEO({ description, lang, meta }) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const { title, description, author } = site.siteMetadata
 
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang: "pl-PL",
       }}
-      title={site.siteMetadata.title}
-      titleTemplate={site.siteMetadata.title}
+      title={title}
+      titleTemplate={title}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: description,
         },
         {
           property: `og:title`,
-          content: site.siteMetadata.title,
+          content: title,
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: description,
         },
         {
           property: `og:type`,
@@ -57,31 +49,19 @@ function SEO({ description, lang, meta }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: author,
         },
         {
           name: `twitter:title`,
-          content: site.siteMetadata.title,
+          content: title,
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: description,
         },
-      ].concat(meta)}
+      ]}
     />
   )
-}
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
 }
 
 export default SEO
