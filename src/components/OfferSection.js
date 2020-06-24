@@ -6,6 +6,7 @@ import TreeCut from "../icons/treecut.svg"
 import VacuumCleaner from "../icons/vacuum-cleaner.svg"
 import Chimney from "../icons/chimney.svg"
 import Tick from "../icons/tick.svg"
+import BrickFloor from "../icons/brick-floor.svg"
 import gsap, { Back, Sine } from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
 
@@ -151,8 +152,12 @@ const OfferSection = () => {
           <h3>Mycie kominów</h3>
         </Offer>
         <Offer className="offer offer-6">
+          <BrickFloor />
+          <h3>Czyszczenie kostki brukowej</h3>
+        </Offer>
+        <Offer className="offer offer-6">
           <Tick />
-          <h3>I wiele więcej usług na wysokości</h3>
+          <h3>I wiele więcej usług</h3>
         </Offer>
       </OfferWrapper>
     </OfferSectionWrapper>
