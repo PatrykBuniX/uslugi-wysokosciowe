@@ -87,18 +87,18 @@ const ContactSection = () => {
       />
       <HeroText>
         <h2>Kontakt</h2>
-        <p>Zadzwon, napisz do mnie!</p>
+        <p>Zadzwoń, napisz do mnie!</p>
       </HeroText>
       <ContactWrapper>
         <Contact>
           <FaPhone />
-          <h3>Zadzwon</h3>
-          <ContactText>741 852 963</ContactText>
+          <h3>Zadzwoń</h3>
+          <ContactText>730 656 896</ContactText>
         </Contact>
         <Contact>
           <FaTelegramPlane />
           <h3>Napisz</h3>
-          <ContactText>firmagorka@gmail.com</ContactText>
+          <ContactText>gorkamich@gmail.com</ContactText>
         </Contact>
       </ContactWrapper>
     </ContactSectionWrapper>

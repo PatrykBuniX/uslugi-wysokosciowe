@@ -166,7 +166,7 @@ const GallerySection = () => {
       />
       <HeroText>
         <h2>Galeria</h2>
-        <p>Zobacz jak wyglada moja praca.</p>
+        <p>Zobacz, jak wygląda moja praca.</p>
       </HeroText>
       <ImgWrapper>
         {galleryImgs &&

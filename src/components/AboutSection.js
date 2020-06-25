@@ -145,9 +145,9 @@ const AboutSection = () => {
       <AboutText className="about-text">
         <AboutH>O Mnie</AboutH>
         <AboutP>
-          Jestem... Oferuję szeroką gamę usług związanych z pracami na wysokości
-          przy użyciu technik dostępu linowego. Jestem w stanie sprostać
-          zadaniom których wykonanie wydawałoby się niemożliwe.
+          Jestem Michał. Oferuję szeroką gamę usług związanych z pracami na
+          wysokości przy użyciu technik dostępu linowego. Jestem w stanie
+          sprostać zadaniom, których wykonanie wydawałoby się niemożliwe.
         </AboutP>
       </AboutText>
       <AboutImgWrapper className="about-img">
