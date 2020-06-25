@@ -172,7 +172,10 @@ const GallerySection = () => {
       <ImgWrapper>
         {edges &&
           edges
-            .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+            .sort(
+              (a, b) =>
+                new Date(b.node.created_at) - new Date(a.node.created_at)
+            )
             .map(({ node }, index) => (
               <StyledImg
                 key={node.public_id}
