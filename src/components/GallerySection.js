@@ -118,22 +118,23 @@ const Button = styled.button`
 
 const GallerySection = () => {
   const {
-    gallery: { galleryImgs },
-  } = useStaticQuery(
-    graphql`
-      query {
-        gallery {
-          galleryImgs {
-            img {
-              url
-              size
-              fileName
-            }
+    allCloudinaryMedia: { edges },
+  } = useStaticQuery(graphql`
+    query CloudinaryImages {
+      allCloudinaryMedia {
+        edges {
+          node {
+            public_id
+            resource_type
+            created_at
+            width
+            height
+            secure_url
           }
         }
       }
-    `
-  )
+    }
+  `)
   const [imgIndex, setImgIndex] = useState(0)
   const [canSlide, setCanSlide] = useState(true)
 
@@ -142,8 +143,8 @@ const GallerySection = () => {
     let newImgIndex = imgIndex + direction
     if (newImgIndex < 0) {
       newImgIndex = 0
-    } else if (newImgIndex > galleryImgs.length - 1) {
-      newImgIndex = galleryImgs.length - 1
+    } else if (newImgIndex > edges.length - 1) {
+      newImgIndex = edges.length - 1
     }
     setImgIndex(newImgIndex)
     setCanSlide(false)
@@ -169,26 +170,28 @@ const GallerySection = () => {
         <p>Zobacz, jak wygląda moja praca.</p>
       </HeroText>
       <ImgWrapper>
-        {galleryImgs &&
-          galleryImgs.map(({ img }, index) => (
-            <StyledImg
-              key={img.fileName + index}
-              className={
-                index === imgIndex
-                  ? "current"
-                  : index < imgIndex
-                  ? "prev"
-                  : "next"
-              }
-              src={img.url}
-              alt={img.fileName}
-            />
-          ))}
+        {edges &&
+          edges
+            .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+            .map(({ node }, index) => (
+              <StyledImg
+                key={node.public_id}
+                className={
+                  index === imgIndex
+                    ? "current"
+                    : index < imgIndex
+                    ? "prev"
+                    : "next"
+                }
+                src={node.secure_url}
+                alt={node.public_id}
+              />
+            ))}
         <Button disabled={imgIndex === 0} go="prev" onClick={() => slide(-1)}>
           <FaAngleLeft />
         </Button>
         <Button
-          disabled={imgIndex === galleryImgs.length - 1}
+          disabled={imgIndex === edges.length - 1}
           go="next"
           onClick={() => slide(1)}
         >

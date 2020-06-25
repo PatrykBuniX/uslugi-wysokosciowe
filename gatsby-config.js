@@ -1,3 +1,4 @@
+require("dotenv").config()
 module.exports = {
   siteMetadata: {
     title: `Górka - usługi wysokościowe`,
@@ -54,6 +55,16 @@ module.exports = {
         // You can use this endpoint that features US mountains for now.
         url:
           "https://api-eu-central-1.graphcms.com/v2/ck98e0tcv0zx901xxdhcuc42v/master",
+      },
+    },
+    {
+      resolve: `gatsby-source-cloudinary`,
+      options: {
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET,
+        resourceType: `image`,
+        prefix: `firmagorka/`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
