@@ -45,19 +45,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-graphql",
-      options: {
-        // The top level query type, can be anything you want!
-        typeName: "gallery",
-        // The field you'll query against, can also be anything you want.
-        fieldName: "gallery",
-        // Your API endpoint, available from the dashboard and settings window.
-        // You can use this endpoint that features US mountains for now.
-        url:
-          "https://api-eu-central-1.graphcms.com/v2/ck98e0tcv0zx901xxdhcuc42v/master",
-      },
-    },
-    {
       resolve: `gatsby-source-cloudinary`,
       options: {
         cloudName: process.env.CLOUDINARY_CLOUD_NAME,
@@ -65,6 +52,13 @@ module.exports = {
         apiSecret: process.env.CLOUDINARY_API_SECRET,
         resourceType: `image`,
         prefix: `firmagorka/`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-remote-images`,
+      options: {
+        nodeType: "CloudinaryMedia",
+        imagePath: "url",
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

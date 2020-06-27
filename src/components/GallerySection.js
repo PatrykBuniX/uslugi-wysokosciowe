@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import Img from "gatsby-image"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa"
@@ -40,13 +41,11 @@ const ImgWrapper = styled.div`
   /*disable double-tap "zoom" on mobile*/
   touch-action: manipulation;
   @media (min-width: 768px) {
-    height: 45vw;
     max-width: 80vw;
   }
 `
 
-const StyledImg = styled.img`
-  position: absolute;
+const StyledImg = styled(Img)`
   top: 0;
   left: 0;
   right: 0;
@@ -130,6 +129,13 @@ const GallerySection = () => {
             width
             height
             secure_url
+            localImage {
+              childImageSharp {
+                fluid(quality: 100) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
           }
         }
       }
@@ -186,8 +192,10 @@ const GallerySection = () => {
                     ? "prev"
                     : "next"
                 }
-                src={node.secure_url}
+                style={{ position: "absolute" }}
+                imgStyle={{ objectFit: "contain" }}
                 alt={node.public_id}
+                fluid={node.localImage.childImageSharp.fluid}
               />
             ))}
         <Button disabled={imgIndex === 0} go="prev" onClick={() => slide(-1)}>
