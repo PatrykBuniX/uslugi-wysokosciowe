@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import img from "../images/image-main.jpg"
 
 const MainWrapper = styled.main`
   height: 100vh;
