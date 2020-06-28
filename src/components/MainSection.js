@@ -4,7 +4,7 @@ import img from "../images/image-main.jpg"
 
 const MainWrapper = styled.main`
   height: 100vh;
-  background-image: url(${img});
+  background-image: url("https://res.cloudinary.com/patrykgorka/image/upload/q_50/v1593335224/body-imgs-gorka/image-main_vdelln.jpg");
   background-size: cover;
   background-position: center;
   position: relative;

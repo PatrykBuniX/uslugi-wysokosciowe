@@ -10,11 +10,9 @@ const BreakWrapper = styled.div`
   background-position: center;
   position: relative;
   border-bottom: var(--border);
-
   @media (min-width: 768px) {
     background-attachment: fixed;
   }
-
   &::before {
     z-index: 0;
     content: "";
