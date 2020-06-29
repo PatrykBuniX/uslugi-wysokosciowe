@@ -15,6 +15,7 @@ gsap.registerPlugin(ScrollTrigger)
 const setUpScrollTrigger = () => {
   if (window.innerWidth < 768) {
     const offers = document.querySelectorAll(".offer")
+    console.log(offers)
     offers.forEach((offer, index) => {
       gsap.from(`.offer-${index + 1}`, {
         scrollTrigger: { trigger: `.offer-${index + 1}`, start: "25% bottom" },
@@ -155,7 +156,7 @@ const OfferSection = () => {
           <BrickFloor />
           <h3>Czyszczenie kostki brukowej</h3>
         </Offer>
-        <Offer className="offer offer-6">
+        <Offer className="offer offer-7">
           <Tick />
           <h3>I wiele więcej usług</h3>
         </Offer>
