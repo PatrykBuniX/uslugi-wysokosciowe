@@ -132,7 +132,7 @@ const GallerySection = () => {
             localImage {
               childImageSharp {
                 fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid_withWebp
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }
             }
@@ -194,7 +194,7 @@ const GallerySection = () => {
                 }
                 style={{ position: "absolute" }}
                 imgStyle={{ objectFit: "contain" }}
-                alt={node.public_id}
+                alt={node.public_id.split("/")[1].split("_")[0]}
                 fluid={node.localImage.childImageSharp.fluid}
               />
             ))}
