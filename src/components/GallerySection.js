@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa"
+import {
+  FaAngleLeft,
+  FaAngleRight,
+  FaAngleDown,
+  FaAngleUp,
+} from "react-icons/fa"
 
 const GalleryWrapper = styled.section`
   display: flex;
@@ -75,6 +80,47 @@ const StyledImg = styled(Img)`
     height: 100%;
   }
 `
+const VideoWrapper = styled.div`
+  margin: 2rem 0;
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`
+
+const StyledVideo = styled.video`
+  margin: 1rem auto;
+  display: block;
+  width: auto;
+  height: 100%;
+  max-height: calc(100vh - 10rem);
+  object-fit: cover;
+  max-width: 100%;
+`
+
+const MoreVideoButton = styled.button`
+  border: none;
+  background: none;
+  padding: 0.5rem 1rem;
+  border-bottom: 0.5rem solid var(--primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  & > p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > svg {
+      margin-left: 0.5rem;
+    }
+  }
+
+  &:hover {
+    background-color: var(--primary);
+  }
+`
 
 const Button = styled.button`
   position: absolute;
@@ -141,19 +187,33 @@ const GallerySection = () => {
       }
     }
   `)
+  const [moreVideos, setMoreVideos] = useState(false)
   const [imgIndex, setImgIndex] = useState(0)
   const [canSlide, setCanSlide] = useState(true)
+
+  const cloudinaryImages = useMemo(
+    () => edges && edges.filter(({ node }) => node.resource_type === "image"),
+    [edges]
+  )
+  const cloudinaryVideos = useMemo(
+    () => edges && edges.filter(({ node }) => node.resource_type === "video"),
+    [edges]
+  )
 
   const slide = direction => {
     if (!canSlide) return
     let newImgIndex = imgIndex + direction
     if (newImgIndex < 0) {
       newImgIndex = 0
-    } else if (newImgIndex > edges.length - 1) {
-      newImgIndex = edges.length - 1
+    } else if (newImgIndex > cloudinaryImages.length - 1) {
+      newImgIndex = cloudinaryImages.length - 1
     }
     setImgIndex(newImgIndex)
     setCanSlide(false)
+  }
+
+  const toggleMoreVideos = () => {
+    setMoreVideos(prev => (prev ? false : true))
   }
 
   useEffect(() => {
@@ -176,39 +236,71 @@ const GallerySection = () => {
         <p>Zobacz, jak wygląda moja praca.</p>
       </HeroText>
       <ImgWrapper>
-        {edges &&
-          edges
-            .sort(
-              (a, b) =>
-                new Date(b.node.created_at) - new Date(a.node.created_at)
-            )
-            .map(({ node }, index) => (
-              <StyledImg
-                key={node.public_id}
-                className={
-                  index === imgIndex
-                    ? "current"
-                    : index < imgIndex
-                    ? "prev"
-                    : "next"
-                }
-                style={{ position: "absolute" }}
-                imgStyle={{ objectFit: "contain" }}
-                alt={node.public_id.split("/")[1].split("_")[0]}
-                fluid={node.localImage.childImageSharp.fluid}
-              />
-            ))}
+        {cloudinaryImages.map(({ node }, index) => (
+          <StyledImg
+            key={node.public_id}
+            className={
+              index === imgIndex
+                ? "current"
+                : index < imgIndex
+                ? "prev"
+                : "next"
+            }
+            style={{ position: "absolute" }}
+            imgStyle={{ objectFit: "contain" }}
+            alt={node.public_id.split("/")[1].split("_")[0]}
+            fluid={node.localImage.childImageSharp.fluid}
+          />
+        ))}
         <Button disabled={imgIndex === 0} go="prev" onClick={() => slide(-1)}>
           <FaAngleLeft />
         </Button>
         <Button
-          disabled={imgIndex === edges.length - 1}
+          disabled={imgIndex === cloudinaryImages.length - 1}
           go="next"
           onClick={() => slide(1)}
         >
           <FaAngleRight />
         </Button>
       </ImgWrapper>
+      <VideoWrapper>
+        {moreVideos ? (
+          cloudinaryVideos.map(({ node }, index) => (
+            <StyledVideo
+              poster={
+                "https://res.cloudinary.com/patrykgorka/image/upload/v1593593075/body-imgs-gorka/video-banner2_lbdgbu.jpg"
+              }
+              key={node.public_id}
+              controls
+              alt={node.public_id.split("/")[1].split("_")[0]}
+            >
+              <source src={node.secure_url} />
+            </StyledVideo>
+          ))
+        ) : (
+          <StyledVideo
+            poster={
+              "https://res.cloudinary.com/patrykgorka/image/upload/v1593593075/body-imgs-gorka/video-banner2_lbdgbu.jpg"
+            }
+            controls
+            alt={cloudinaryVideos[0].node.public_id.split("/")[1].split("_")[0]}
+          >
+            <source src={cloudinaryVideos[0].node.secure_url} />
+          </StyledVideo>
+        )}
+      </VideoWrapper>
+      <MoreVideoButton onClick={toggleMoreVideos}>
+        {moreVideos ? (
+          <p>
+            Pokaż mniej filmów <FaAngleUp />
+          </p>
+        ) : (
+          <p>
+            Pokaż więcej filmów
+            <FaAngleDown />
+          </p>
+        )}
+      </MoreVideoButton>
     </GalleryWrapper>
   )
 }

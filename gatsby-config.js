@@ -55,6 +55,16 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-cloudinary`,
+      options: {
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET,
+        resourceType: `video`,
+        prefix: `firmagorka/`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-remote-images`,
       options: {
         nodeType: "CloudinaryMedia",
