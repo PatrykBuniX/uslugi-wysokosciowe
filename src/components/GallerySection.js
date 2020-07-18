@@ -178,7 +178,7 @@ const GallerySection = () => {
             localImage {
               childImageSharp {
                 fluid(quality: 100) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
