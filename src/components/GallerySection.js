@@ -238,6 +238,7 @@ const GallerySection = () => {
       <ImgWrapper>
         {cloudinaryImages.map(({ node }, index) => (
           <StyledImg
+            loading="eager"
             key={node.public_id}
             className={
               index === imgIndex
