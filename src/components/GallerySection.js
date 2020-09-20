@@ -290,7 +290,7 @@ const GallerySection = () => {
           </StyledVideo>
         )}
       </VideoWrapper>
-      <MoreVideoButton onClick={toggleMoreVideos}>
+      <MoreVideoButton key={moreVideos} onClick={toggleMoreVideos}>
         {moreVideos ? (
           <p>
             Pokaż mniej filmów <FaAngleUp />
