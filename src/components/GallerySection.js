@@ -190,6 +190,7 @@ const GallerySection = () => {
   const [moreVideos, setMoreVideos] = useState(false)
   const [imgIndex, setImgIndex] = useState(0)
   const [canSlide, setCanSlide] = useState(true)
+  const [touchX, setTouchX] = useState(0)
 
   const cloudinaryImages = useMemo(
     () => edges && edges.filter(({ node }) => node.resource_type === "image"),
@@ -203,13 +204,10 @@ const GallerySection = () => {
   const slide = direction => {
     if (!canSlide) return
     let newImgIndex = imgIndex + direction
-    if (newImgIndex < 0) {
-      newImgIndex = 0
-    } else if (newImgIndex > cloudinaryImages.length - 1) {
-      newImgIndex = cloudinaryImages.length - 1
+    if (!(newImgIndex < 0 || newImgIndex > cloudinaryImages.length - 1)) {
+      setCanSlide(false)
+      setImgIndex(newImgIndex)
     }
-    setImgIndex(newImgIndex)
-    setCanSlide(false)
   }
 
   const toggleMoreVideos = () => {
@@ -225,6 +223,18 @@ const GallerySection = () => {
     }
   }, [imgIndex])
 
+  const handleTouchStart = e => {
+    setTouchX(e.touches[0].clientX)
+  }
+  const handleTouchEnd = e => {
+    const touchDiff = e.changedTouches[0].clientX - touchX
+    if (touchDiff >= 50) {
+      slide(-1)
+    } else if (touchDiff <= -50) {
+      slide(1)
+    }
+  }
+
   return (
     <GalleryWrapper>
       <a
@@ -236,23 +246,30 @@ const GallerySection = () => {
         <p>Zobacz, jak wygląda moja praca.</p>
       </HeroText>
       <ImgWrapper>
-        {cloudinaryImages.map(({ node }, index) => (
-          <StyledImg
-            loading="eager"
-            key={node.public_id}
-            className={
-              index === imgIndex
-                ? "current"
-                : index < imgIndex
-                ? "prev"
-                : "next"
-            }
-            style={{ position: "absolute" }}
-            imgStyle={{ objectFit: "contain" }}
-            alt={node.public_id.split("/")[1].split("_")[0]}
-            fluid={node.localImage.childImageSharp.fluid}
-          />
-        ))}
+        {cloudinaryImages.map(({ node }, index) => {
+          const touchEvents =
+            index === imgIndex
+              ? { onTouchStart: handleTouchStart, onTouchEnd: handleTouchEnd }
+              : {}
+          return (
+            <div key={node.public_id} {...touchEvents}>
+              <StyledImg
+                loading="eager"
+                className={
+                  index === imgIndex
+                    ? "current"
+                    : index < imgIndex
+                    ? "prev"
+                    : "next"
+                }
+                style={{ position: "absolute" }}
+                imgStyle={{ objectFit: "contain" }}
+                alt={node.public_id.split("/")[1].split("_")[0]}
+                fluid={node.localImage.childImageSharp.fluid}
+              />
+            </div>
+          )
+        })}
         <Button disabled={imgIndex === 0} go="prev" onClick={() => slide(-1)}>
           <FaAngleLeft />
         </Button>
