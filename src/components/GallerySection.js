@@ -191,6 +191,7 @@ const GallerySection = () => {
   const [imgIndex, setImgIndex] = useState(0)
   const [canSlide, setCanSlide] = useState(true)
   const [touchX, setTouchX] = useState(0)
+  const [grabbing, setGrabbing] = useState(false)
   const [clickX, setClickX] = useState(0)
 
   const cloudinaryImages = useMemo(
@@ -242,10 +243,12 @@ const GallerySection = () => {
 
   const handleMouseDown = e => {
     setClickX(e.clientX)
+    setGrabbing(true)
   }
   const handleMouseUp = e => {
     const touchDiff = e.clientX - clickX
     detectSwipe(touchDiff)
+    setGrabbing(false)
   }
 
   return (
@@ -270,7 +273,11 @@ const GallerySection = () => {
                 }
               : {}
           return (
-            <div key={node.public_id} {...touchEvents}>
+            <div
+              style={{ cursor: grabbing ? "grabbing" : "grab" }}
+              key={node.public_id}
+              {...touchEvents}
+            >
               <StyledImg
                 loading="eager"
                 className={
