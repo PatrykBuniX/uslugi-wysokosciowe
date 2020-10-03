@@ -191,6 +191,7 @@ const GallerySection = () => {
   const [imgIndex, setImgIndex] = useState(0)
   const [canSlide, setCanSlide] = useState(true)
   const [touchX, setTouchX] = useState(0)
+  const [clickX, setClickX] = useState(0)
 
   const cloudinaryImages = useMemo(
     () => edges && edges.filter(({ node }) => node.resource_type === "image"),
@@ -223,16 +224,28 @@ const GallerySection = () => {
     }
   }, [imgIndex])
 
-  const handleTouchStart = e => {
-    setTouchX(e.touches[0].clientX)
-  }
-  const handleTouchEnd = e => {
-    const touchDiff = e.changedTouches[0].clientX - touchX
+  const detectSwipe = touchDiff => {
     if (touchDiff >= 50) {
       slide(-1)
     } else if (touchDiff <= -50) {
       slide(1)
     }
+  }
+
+  const handleTouchStart = e => {
+    setTouchX(e.touches[0].clientX)
+  }
+  const handleTouchEnd = e => {
+    const touchDiff = e.changedTouches[0].clientX - touchX
+    detectSwipe(touchDiff)
+  }
+
+  const handleMouseDown = e => {
+    setClickX(e.clientX)
+  }
+  const handleMouseUp = e => {
+    const touchDiff = e.clientX - clickX
+    detectSwipe(touchDiff)
   }
 
   return (
@@ -249,7 +262,12 @@ const GallerySection = () => {
         {cloudinaryImages.map(({ node }, index) => {
           const touchEvents =
             index === imgIndex
-              ? { onTouchStart: handleTouchStart, onTouchEnd: handleTouchEnd }
+              ? {
+                  onTouchStart: handleTouchStart,
+                  onTouchEnd: handleTouchEnd,
+                  onMouseDown: handleMouseDown,
+                  onMouseUp: handleMouseUp,
+                }
               : {}
           return (
             <div key={node.public_id} {...touchEvents}>

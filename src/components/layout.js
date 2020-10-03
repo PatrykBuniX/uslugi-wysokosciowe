@@ -13,6 +13,13 @@ const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
   }
 
+  img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
 
   body{
     font-family: 'Roboto', sans-serif;
