@@ -193,6 +193,7 @@ const GallerySection = () => {
   const [touchX, setTouchX] = useState(0)
   const [grabbing, setGrabbing] = useState(false)
   const [clickX, setClickX] = useState(0)
+  const [fingers, setFingers] = useState(0)
 
   const cloudinaryImages = useMemo(
     () => edges && edges.filter(({ node }) => node.resource_type === "image"),
@@ -234,9 +235,13 @@ const GallerySection = () => {
   }
 
   const handleTouchStart = e => {
+    //check how many fingers touched the image
+    setFingers(e.touches.length)
     setTouchX(e.touches[0].clientX)
   }
   const handleTouchEnd = e => {
+    //do not swipe when touched with more than one finger
+    if (fingers > 1) return
     const touchDiff = e.changedTouches[0].clientX - touchX
     detectSwipe(touchDiff)
   }
