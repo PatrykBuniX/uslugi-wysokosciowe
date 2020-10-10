@@ -10,6 +10,7 @@ function SEO() {
           siteMetadata {
             title
             description
+            keywords
             author
           }
         }
@@ -17,7 +18,7 @@ function SEO() {
     `
   )
 
-  const { title, description, author } = site.siteMetadata
+  const { title, description, author, keywords } = site.siteMetadata
 
   return (
     <Helmet
@@ -34,6 +35,10 @@ function SEO() {
         {
           property: `og:title`,
           content: title,
+        },
+        {
+          name: "keywords",
+          content: keywords.join(","),
         },
         {
           property: `og:description`,
@@ -62,6 +67,10 @@ function SEO() {
       ]}
     />
   )
+}
+
+SEO.defaultProps = {
+  meta: [],
 }
 
 export default SEO
